@@ -11,18 +11,19 @@
         // }
 
         function sendTokenToWebView(token) {
+            window.webkit.messageHandlers.appInterface.postMessage(token);
             // console.log('dlcslskdcm', window.appInterface, typeof window.appInterface);
-            const appInterface = window.appInterface;
-            if (typeof appInterface !== 'undefined' && appInterface.postMessage) {
-              // For Android
-              // appInterface.postMessage(token);
-              // For IOS
-               window.webkit.messageHandlers.appInterface.postMessage(token);
-              //   console.log('Token sent to mobile:', token);
-            } else {
-              if (recaptchaRef?.current) recaptchaRef.current.reset();
-              console.error('appInterface.postMessage is not available');
-            }
+            // const appInterface = window.appInterface;
+            // if (typeof appInterface !== 'undefined' && appInterface.postMessage) {
+            //   // For Android
+            //   // appInterface.postMessage(token);
+            //   // For IOS
+               
+            //   //   console.log('Token sent to mobile:', token);
+            // } else {
+            //   if (recaptchaRef?.current) recaptchaRef.current.reset();
+            //   console.error('appInterface.postMessage is not available');
+            // }
       }
 
         // Execute postSomeMessage('Apple') immediately after the page loads
