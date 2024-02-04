@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // function postSomeMessage(message) {
+        //     window.webkit.messageHandlers.appInterface.postMessage(message)
+        // }
+
+        function sendTokenToWebView(token) {
+            console.log('dlcslskdcm', window.appInterface, typeof window.appInterface);
+            const appInterface = window.appInterface;
+            if (typeof appInterface !== 'undefined' && appInterface.postMessage) {
+              // For Android
+              // appInterface.postMessage(token);
+              // For IOS
+               // window.webkit.messageHandlers.appInterface.postMessage(token);
+              //   console.log('Token sent to mobile:', token);
+            } else {
+              if (recaptchaRef?.current) recaptchaRef.current.reset();
+              console.error('appInterface.postMessage is not available');
+            }
+      }
+
+        // Execute postSomeMessage('Apple') immediately after the page loads
+        window.onload = function() {
+            sendTokenToWebView('Mango');
+        };
+    </script>
+</head>
+<body>
+    <!-- You can remove the buttons since the function will be triggered automatically -->
+</body>
+</html>
