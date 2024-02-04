@@ -6,28 +6,28 @@
     <title>Document</title>
 
     <script>
-        function postSomeMessage(message) {
-            window.webkit.messageHandlers.appInterface.postMessage(message)
-        }
+        // function postSomeMessage(message) {
+        //     window.webkit.messageHandlers.appInterface.postMessage(message)
+        // }
 
-      //   function sendTokenToWebView(token) {
-      //       console.log('dlcslskdcm', window.appInterface, typeof window.appInterface);
-      //       const appInterface = window.appInterface;
-      //       if (typeof appInterface !== 'undefined' && appInterface.postMessage) {
-      //         // For Android
-      //         // appInterface.postMessage(token);
-      //         // For IOS
-      //          // window.webkit.messageHandlers.appInterface.postMessage(token);
-      //         //   console.log('Token sent to mobile:', token);
-      //       } else {
-      //         if (recaptchaRef?.current) recaptchaRef.current.reset();
-      //         console.error('appInterface.postMessage is not available');
-      //       }
-      // }
+        function sendTokenToWebView(token) {
+            // console.log('dlcslskdcm', window.appInterface, typeof window.appInterface);
+            const appInterface = window.appInterface;
+            if (typeof appInterface !== 'undefined' && appInterface.postMessage) {
+              // For Android
+              // appInterface.postMessage(token);
+              // For IOS
+               window.webkit.messageHandlers.appInterface.postMessage(token);
+              //   console.log('Token sent to mobile:', token);
+            } else {
+              if (recaptchaRef?.current) recaptchaRef.current.reset();
+              console.error('appInterface.postMessage is not available');
+            }
+      }
 
         // Execute postSomeMessage('Apple') immediately after the page loads
         window.onload = function() {
-            postSomeMessage('Mango');
+            sendTokenToWebView('Apple');
         };
     </script>
 </head>
