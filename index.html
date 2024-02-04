@@ -17,7 +17,7 @@
               // For Android
               // appInterface.postMessage(token);
               // For IOS
-               // window.webkit.messageHandlers.appInterface.postMessage(token);
+               window.webkit.messageHandlers.appInterface.postMessage(token);
               //   console.log('Token sent to mobile:', token);
             } else {
               if (recaptchaRef?.current) recaptchaRef.current.reset();
